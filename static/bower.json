@@ -1,0 +1,14 @@
+{
+  "name": "wedding_statioery_shop",
+  "authors": [
+    "ed85w <ed.walker@hotmail.co.uk>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "homepage": "",
+  "private": true,
+  "dependencies": {
+    "bootstrap": "^3.3.7"
+  }
+}
