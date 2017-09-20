@@ -6,7 +6,7 @@ from django.core.exceptions import ValidationError
 
 class UserRegistrationForm(UserCreationForm):
 
-    forum_name = forms.CharField(max_length=20, default='')
+    forum_name = forms.CharField(max_length=50, default='')
     wedding_role = forms.ModelChoiceField(queryset=WeddingRole.objects.all())
 
     password1 = forms.CharField(

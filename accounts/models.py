@@ -35,7 +35,7 @@ class WeddingRole(models.Model):
 class User(AbstractUser):
 
     wedding_role = models.CharField(max_length=40, default='')
-    forum_name = models.CharField(max_length=20, default='')
+    forum_name = models.CharField(max_length=50, default='')
     stripe_id = models.CharField(max_length=40, default='')
 
     objects = AccountUserManager()
