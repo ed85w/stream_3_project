@@ -23,14 +23,22 @@ class AccountUserManager(UserManager):
  
         return user
  
-class User(AbstractUser):
-
-	wedding_role = models.ForeignKey(WeddingRole, related_name='users')
-	stripe_id = models.CharField(max_length=40, default='')
- 
-    objects = AccountUserManager()
-
 
 class WeddingRole(models.Model):
 
-    wedding_role = models.CharField()
+  wedding_role = models.CharField(max_length=20, default='')
+
+  def __unicode__(self):
+    return self.wedding_role
+
+
+class User(AbstractUser):
+
+  wedding_role = models.CharField(max_length=40, default='')
+  forum_name = models.CharField(max_length=20, default='')
+  stripe_id = models.CharField(max_length=40, default='')
+ 
+  objects = AccountUserManager()
+
+
+
