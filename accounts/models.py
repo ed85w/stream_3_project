@@ -26,19 +26,19 @@ class AccountUserManager(UserManager):
 
 class WeddingRole(models.Model):
 
-  wedding_role = models.CharField(max_length=20, default='')
+    wedding_role = models.CharField(max_length=20, default='')
 
-  def __unicode__(self):
-    return self.wedding_role
+    def __unicode__(self):
+        return self.wedding_role
 
 
 class User(AbstractUser):
 
-  wedding_role = models.CharField(max_length=40, default='')
-  forum_name = models.CharField(max_length=20, default='')
-  stripe_id = models.CharField(max_length=40, default='')
- 
-  objects = AccountUserManager()
+    wedding_role = models.CharField(max_length=40, default='')
+    forum_name = models.CharField(max_length=20, default='')
+    stripe_id = models.CharField(max_length=40, default='')
+
+    objects = AccountUserManager()
 
 
 
