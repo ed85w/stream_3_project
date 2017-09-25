@@ -6,8 +6,9 @@ from django.core.exceptions import ValidationError
 
 class UserRegistrationForm(UserCreationForm):
 
-    forum_name = forms.CharField(max_length=50, default='')
+    forum_name = forms.CharField(max_length=50)
     wedding_role = forms.ModelChoiceField(queryset=WeddingRole.objects.all())
+    email = forms.EmailField()
 
     password1 = forms.CharField(
         label='Password',
@@ -21,7 +22,7 @@ class UserRegistrationForm(UserCreationForm):
  
     class Meta:
         model = User
-        fields = ['email', 'password1', 'password2', 'first_name', 'last_name']
+        fields = ['first_name', 'last_name', 'email', 'password1', 'password2', 'forum_name', 'wedding_role']
         exclude = ['username']
 
     def clean_password2(self):
@@ -34,12 +35,12 @@ class UserRegistrationForm(UserCreationForm):
 
         return password2
 
-    def clean_email(self):
-        email = self.cleaned_data.get('email')
-
-        if not email:
-            message = "Please enter your email address"
-            raise forms.ValidationError(message)
+    # def clean_email(self):
+    #     email = self.cleaned_data.get('email')
+    #
+    #     if not email:
+    #         message = "Please enter your email address"
+    #         raise forms.ValidationError(message)
 
     def save(self, commit=True):
         instance = super(UserRegistrationForm, self).save(commit=False)

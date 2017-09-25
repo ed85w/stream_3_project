@@ -1,6 +1,5 @@
 {% load staticfiles %}
 
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,15 +8,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
+    <link rel="stylesheet" type="text/css" href="{% static 'bower_components/bootstrap/dist/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static "css/font-awesome-4.7.0/css/font-awesome.css" %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+
     <script type="text/javascript" src="{% static 'bower_components/jquery/dist/jquery.min.js' %}"></script>
     <script type="text/javascript" src="{% static 'bower_components/bootstrap/dist/js/bootstrap.min.js' %} "></script>
+    <script type="text/javascript" src="{% static 'js/script.js' %} "></script>
+    {% block head_js %}{% endblock head_js %}
 
-    <link rel="stylesheet" type="text/css" href="{% static 'bower_components/bootstrap/dist/css/bootstrap.min.css' %}">
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
-    
+
 </head>
 <body>
-  <div class="test">
+  <div id="home-back" class="nav-home">
     <nav class="navbar">
       <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
@@ -31,10 +35,14 @@
 
         <div class="collapse navbar-collapse" id="navbar1"> 
           <ul class="nav navbar-nav">
-              <li><a href="#">HOME</a></li>
-              <li><a href="#">SHOP</a></li>
-              <li><a href="#">FORUM</a></li>
-              <li><a href="#">LOGIN/REGISTER</a></li>
+              <li class="nav-item" id="nav-home"><a href="{% url 'index' %}">HOME</a></li>
+              <li class="nav-item" id="nav-shop"><a href="#">SHOP</a></li>
+              <li class="nav-item" id="nav-forum"><a href="/forum/">FORUM</a></li>
+              {% if user.is_authenticated %}
+                <li><a href="{% url 'logout' %}">LOGOUT</a></li>
+              {% else %}
+                <li><a href="{% url 'login' %}">LOGIN/REGISTER</a></li>
+              {% endif %}
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <li><a href="#"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span></a></li>
@@ -53,5 +61,5 @@
  
   <!-- script references -->
 
-</script>
+
 </html>

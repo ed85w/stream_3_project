@@ -17,7 +17,7 @@ class ProductCategory(models.Model):
 class Product(models.Model):
     title = models.CharField(max_length=120)
     description = models.TextField(null=True, blank=True)
-    category = models.ManyToManyField(ProductCategory, null=True, blank=True)
+    category = models.ManyToManyField(ProductCategory, blank=True)
     main_image = models.ImageField(upload_to='shop/images/')
     price = models.DecimalField(decimal_places=2, max_digits=100, default='')
     stock = models.IntegerField()
@@ -47,7 +47,7 @@ class ProductImage(models.Model):
 
 class ProductReview(models.Model):
     product = models.ForeignKey(Product)
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, related_name='posts')
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, related_name='product_reviews')
     review = models.TextField(null=True, blank=True)
     rating = models.IntegerField(validators=[MaxValueValidator(5), MinValueValidator(1)])
 
