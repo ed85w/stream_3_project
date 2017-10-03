@@ -34,7 +34,7 @@ def new_thread(request, subject_id):
             post.thread = thread
             post.save()
 
-            messages.success(request, "Your have create a new thread!")
+            messages.success(request, "Your have created a new thread!")
 
             return redirect(reverse('thread', args={thread.pk}))
     else:
