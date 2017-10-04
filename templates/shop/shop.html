@@ -3,7 +3,7 @@
 {% block content %}
 {% load bootstrap_tags %}
 
-    <div class="col-lg-9">
+    <div class="col-lg-12">
 
 {#        <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">#}
 {#          <div class="carousel-inner" role="listbox">#}
@@ -30,21 +30,21 @@
           <div class="row">
 
               {% for product in products %}
-                <div class="col-lg-4 col-md-6 mb-4">
-                  <div class="card h-100">
-                    <a href="#"><img class="img-container" src="{{ product.main_image.url }}" alt="produc image" height="300" width="150"></a>
+                <div class="col-lg-4 col-md-6 mb-4"><a href="{% url "product_detail" product.id %}" >
+                  <div class="card">
+                    <img  src="{{ product.main_image.url }}" width="326" height="244" alt="product image">
                     <div class="card-body">
                       <h4 class="card-title">
                         <a href="#">{{ product.name }}</a>
                       </h4>
-                      <h5>{{ product.price }}</h5>
+                      <h5>£{{ product.price }}</h5>
                       <p class="card-text">{{ product.description }}</p>
                     </div>
                     <div class="card-footer">
                       <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
                     </div>
                   </div>
-                </div>
+                </a></div>
             {% endfor %}
 
           </div>

@@ -1,22 +1,26 @@
 html, 
 body {
-	height: 100vh;
+	color: black;
+}
+
+#home-page{
+	/*height: 100vh;*/
 }
 
 #home-back {
 	position: relative;
 	width: 100%;
-	height: 100%;
+
 	overflow-y: hidden;
 }
 
 .nav-home {
-
-	/*background: url("../img/home-image.jpeg") no-repeat center center, #fff;*/
+	height: 100vh;
+	background: url("../img/home-image.jpeg") no-repeat center center, #fff;
 	/* fallback for old browsers */
-	/*background: url("../img/home-image.jpeg") no-repeat center center, -webkit-linear-gradient(to left, #fff, #fff);*/
+	background: url("../img/home-image.jpeg") no-repeat center center, -webkit-linear-gradient(to left, #fff, #fff);
 	/* Chrome 10-25, Safari 5.1-6 */
-	/*background: url("../img/home-image.jpeg") no-repeat center center, linear-gradient(to left, #fff, #fff);*/
+	background: url("../img/home-image.jpeg") no-repeat center center, linear-gradient(to left, #fff, #fff);
 	/* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 	color: black;
 	/*background-position: right;*/
@@ -27,16 +31,21 @@ body {
 }
 
 .nav-forum {
-	background: url("../img/forum-image.jpeg") no-repeat center center, #fff;
+	height: 100%;
+	background: none;
 	/* fallback for old browsers */
-	background: url("../img/forum-image.jpeg") no-repeat center center, -webkit-linear-gradient(to left, #fff, #fff);
+	background: none;
 	/* Chrome 10-25, Safari 5.1-6 */
-	background: url("../img/forum-image.jpeg") no-repeat center center, linear-gradient(to left, #fff, #fff);
+	background: none;
 	/* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-	color: white;
-	/*background-position: right;*/
-	-webkit-background-size: cover;
-	-moz-background-size: cover;
-	-o-background-size: cover;
-	background-size: cover;
+	background-color: white;
+}
+
+/*SHOP */
+
+div .card {
+	border: 2px solid black;
+	background-color: white;
+	padding: 10px;
+	margin-bottom: 10px;
 }

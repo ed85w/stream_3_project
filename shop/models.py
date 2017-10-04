@@ -18,7 +18,7 @@ class Product(models.Model):
     title = models.CharField(max_length=120)
     description = models.TextField(null=True, blank=True)
     category = models.ManyToManyField(ProductCategory, blank=True)
-    main_image = models.ImageField(upload_to='shop/images/')
+    main_image = models.ImageField(upload_to='media/')
     price = models.DecimalField(decimal_places=2, max_digits=100, default='')
     stock = models.IntegerField()
     slug = models.SlugField(unique=True)
@@ -35,7 +35,7 @@ class Product(models.Model):
 
 class ProductImage(models.Model):
     product = models.ForeignKey(Product)
-    image = models.ImageField(upload_to='shop/images/')
+    image = models.ImageField(upload_to='media/')
     featured = models.BooleanField(default=False)
     thumbnail = models.BooleanField(default=False)
     active = models.BooleanField(default=True)

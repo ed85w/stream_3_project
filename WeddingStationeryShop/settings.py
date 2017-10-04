@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'accounts',
     'shop',
     'forum',
+    'cart',
 ]
 
 INTERNAL_IPS = ('127.0.0.1',)
@@ -141,5 +142,13 @@ STATICFILES_DIRS = (
 )
 
 
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+
+
 # tinymce settings
 TINYMCE_JS_ROOT = os.path.join(BASE_DIR, "static", 'js', 'tinymce', 'tinymce.min.js')
+
+
+#sessions
+SESSION_ENGINE = "django.contrib.sessions.backends.file"

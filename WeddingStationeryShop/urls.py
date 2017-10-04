@@ -16,11 +16,15 @@ Including another URLconf
 from django.conf.urls import url, include
 from django.contrib import admin
 from django.conf import settings
+from django.conf.urls.static import static
 from home import views as home_views
 from accounts import views as accounts_views
 from forum import views as forum_views
+from shop import views as shop_views
+from cart import views as cart_views
 
 urlpatterns = [
+
     url(r'^admin/', admin.site.urls),
     url(r'^$', home_views.get_index, name='index'),
 
@@ -37,7 +41,19 @@ urlpatterns = [
     url(r'^post/new/(?P<thread_id>\d+)/$', forum_views.new_post, name='new_post'),
     url(r'^post/edit/(?P<thread_id>\d+)/(?P<post_id>\d+)/$',forum_views.edit_post, name='edit_post'),
     url(r'^post/delete/(?P<thread_id>\d+)/(?P<post_id>\d+)/$', forum_views.delete_post, name='delete_post'),
+
+    #shop
+    url(r'^shop/$', shop_views.shop),
+    url(r'^shop/(?P<product_id>\d+)/$', shop_views.product_detail, name='product_detail'),
+    url(r'^shop/new/(?P<product_id>\d+)/$', shop_views.add_review, name='add_review'),
+
+    #cart
+    url(r'^cart/$', cart_views.cart, name='cart'),
+
+
 ]
+
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 if settings.DEBUG:
     import debug_toolbar
