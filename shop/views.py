@@ -89,7 +89,7 @@ def cart(request):
     cart = request.session['cart']
     print cart
     for item in cart:
-        print item
+        print item['quantity']
     return render(request, 'shop/cart.html', {'cart': cart})
 
 
