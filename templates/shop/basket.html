@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% load bootstrap_tags %}
+{% block content %}
+
+    {% if request.session.basket|length > 0 %}
+
+    <h1>BASKET!</h1>
+
+    <table class="table table-striped" id="basket-table">
+        <thead>
+            <tr>
+                <th>Product</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Subtotal</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+
+        {% for item_id, item in basket.items %}
+            <tr id="row{{ item_id }}">
+                <td class="input-value hidden">{{ item_id }}</td>
+                <td class="input-value" id="basket-item-title{{ item_id }}">{{ item.product_title }}</td>
+                <td class="input-value" id="basket-itm-price{{ item_id }}">£{{ item.product_price }}</td>
+                <td><input class="input-value" id="basket-qty-input{{ item_id }}" type="number" value="{{ item.quantity }}" min="1"></td>
+                <td class="input-value" id="basket-itm-subtotal{{ item_id }}">£{{ item.subtotal }}</td>
+                <td><button class="btn-danger" id="btn{{ item_id }}">Remove from Basket</button></td>
+            </tr>
+        {% endfor %}
+        </tbody>
+        <tfoot>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td id="basket-total">£{{ basket_total  }}</td>
+            </tr>
+        </tfoot>
+
+    </table>
+
+    <button id="checkout-btn">Proceed to Checkout</button>
+    <button id="shop-rtn-btn">Continue Shopping</button>
+
+
+    {% else %}
+
+    <h1>YOUR BASKET IS EMPTY</h1>
+    <h1>BUY SOME STUFF</h1>
+
+    {% endif %}
+
+
+
+{% endblock %}

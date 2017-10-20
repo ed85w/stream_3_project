@@ -1,3 +1,7 @@
-{{ review.review }} <br>
-{{ review.rating }} <br>
-{{ review.user.forum_name }}
+{% load shop_extras %}
+
+<tr>
+    <td><div><span class="stars-container stars-{{ review.rating|convert_score_for_stars }}">★★★★★</span></div></td>
+    <td>{{ review.review }}</td>
+    <td>{{ review.user.forum_name }}</td>
+</tr>

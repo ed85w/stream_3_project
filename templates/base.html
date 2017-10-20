@@ -19,12 +19,14 @@
     {% block head_js %}{% endblock head_js %}
 
 
+
 </head>
-<body>
-  <div id="home-back" class="nav-forum">
+
+<body id="home-back" class="home {% block background %}{% endblock %}">
+{#  <div  >#}
     <nav class="navbar">
       <div class="container-fluid">
-        <a class="navbar-brand pull-right" href="{% url 'cart' %}"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span> 0</a>
+        <a class="navbar-brand pull-right" href="{% url 'basket' %}"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span> {{ request.session.basket.items | length }}</a>
         <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed pull-left" data-toggle="collapse" data-target="#navbar1" aria-expanded="false">
             <span class="icon-bar"></span>
@@ -49,11 +51,21 @@
       </div><!-- /.container-fluid -->
     </nav>
 
-        <div class="container">
-            {% block content %}
-            {% endblock %}
+    {% if messages %}
+        <div class="alert alert-success">
+            <div class="messages">
+                {% for message in messages %}
+                    {{ message }}
+                {% endfor %}
+            </div>
         </div>
+    {% endif %}
+
+    <div class="container">
+        {% block content %}
+        {% endblock %}
     </div>
+
 </body>
  
 

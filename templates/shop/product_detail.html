@@ -8,7 +8,7 @@
     </div>
 
     <!---product images--->
-    <div class="col-md-6">
+    <div class="col-md-6 col-sm-12">
         <div class="col-md-12 product-image-container">
             <img class="main-product-image" src="{{ product.main_image.url }}" alt="product image">
         </div>
@@ -17,10 +17,11 @@
                 {% include "shop/product_image.html" %}
             </div>
         {% endfor %}
+        <p>a</p>
     </div>
 
     <!--product details-->
-    <div class="col-md-6">
+    <div class="col-md-6 col-sm-12">
         <h4> {{ product.description }}</h4>
         <h4> £{{ product.price }}</h4>
 

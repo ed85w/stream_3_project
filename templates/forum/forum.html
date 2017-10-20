@@ -2,6 +2,7 @@
 {% load thread_extras %}
 {% block content %}
 {% load bootstrap_tags %}
+{% block background %}forum{% endblock %}
     {% for subject in subjects %}
        <section class="subject">
            <h2><a href="{% url "threads" subject.id %}">{{ subject.name }}</a></h2>

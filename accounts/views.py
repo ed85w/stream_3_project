@@ -5,11 +5,11 @@ from django.template.context_processors import csrf
 from accounts.forms import UserRegistrationForm, UserLoginForm
 
 
-
 def register(request):
     if request.method == 'POST':
         form = UserRegistrationForm(request.POST)
         if form.is_valid():
+            # add test to see if username already exists!!!
             form.save()
 
             user = auth.authenticate(email=request.POST.get('email'),
@@ -17,7 +17,9 @@ def register(request):
 
             if user:
                 messages.success(request, "You have successfully registered")
+                auth.login(request, user)
                 return redirect(reverse('index'))
+
 
             else:
                 messages.error(request, "unable to log you in at this time!")

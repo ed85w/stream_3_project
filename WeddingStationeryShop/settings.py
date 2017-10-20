@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django_forms_bootstrap',
+    'rest_framework',
     'debug_toolbar',
     'tinymce',
     'emoticons',
@@ -45,7 +46,6 @@ INSTALLED_APPS = [
     'accounts',
     'shop',
     'forum',
-    'cart',
 ]
 
 INTERNAL_IPS = ('127.0.0.1',)

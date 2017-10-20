@@ -18,7 +18,7 @@ def started_time(created_at):
     return arrow.get(created_at).humanize()
 
 
-@register.simple_tag
-def last_posted_user_name(thread):
-    last_post = thread.posts.all().order_by('created_at').last()
-    return last_post.user.forum_name
+# @register.simple_tag
+# def last_posted_user_name(thread):
+#     last_post = thread.posts.all().order_by('created_at').last()
+#     return last_post.user.forum_name

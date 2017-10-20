@@ -3,18 +3,14 @@ body {
 	color: black;
 }
 
-#home-page{
-	/*height: 100vh;*/
-}
+/*---BASE PAGE---*/
 
 #home-back {
 	position: relative;
 	width: 100%;
-
-	overflow-y: hidden;
 }
 
-.nav-home {
+.home {
 	height: 100vh;
 	background: url("../img/home-image.jpeg") no-repeat center center, #fff;
 	/* fallback for old browsers */
@@ -30,22 +26,97 @@ body {
 	background-size: cover;
 }
 
-.nav-forum {
+/*---SHOP PAGE---*/
+
+.shop {
+
 	height: 100%;
 	background: none;
-	/* fallback for old browsers */
-	background: none;
-	/* Chrome 10-25, Safari 5.1-6 */
-	background: none;
-	/* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-	background-color: white;
+	background-color: #ebebeb;
+
 }
 
-/*SHOP */
+.stars-container {
+  position: relative;
+  display: inline-block;
+  color: transparent;
+}
+
+.stars-container:before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  content: '★★★★★';
+  color: lightgray;
+}
+
+.stars-container:after {
+  position: absolute;
+  top: 0;
+  left: 0;
+  content: '★★★★★';
+  color: gold;
+  overflow: hidden;
+}
+
+.stars-0:after { width: 0%; }
+.stars-10:after { width: 10%; }
+.stars-20:after { width: 20%; }
+.stars-30:after { width: 30%; }
+.stars-40:after { width: 40%; }
+.stars-50:after { width: 50%; }
+.stars-60:after { width: 60%; }
+.stars-70:after { width: 70%; }
+.stars-80:after { width: 80%; }
+.stars-90:after { width: 90%; }
+.stars-100:after { width: 100%; }
+
+
+/*---FORUM PAGE---*/
+
+.forum {
+	height: 100%;
+	background: none;
+	background-color: #ebebeb;
+}
 
 div .card {
 	border: 2px solid black;
 	background-color: white;
 	padding: 10px;
 	margin-bottom: 10px;
+}
+	/*---PRODUCT_DETAIL TEMPLATE---*/
+
+	h1.product-title {
+		text-align: center;
+		text-decoration: underline;
+		margin-bottom: 20px;
+	}
+
+	.main-product-image {
+		width: 100%;
+	}
+
+
+
+	/*---PRODUCT_IMAGE TEMPLATE---*/
+
+	.product-image-container{
+		padding: 0;
+	}
+
+	img.product-image{
+		padding: 5px;
+		max-height: 155px;	/*check!!!!!!!!!*/
+		width: 100%;
+	}
+
+
+/*---FORUM PAGE---*/
+
+.nav-forum {
+	height: 100%;
+	background: none;
+	background-color: white;
 }

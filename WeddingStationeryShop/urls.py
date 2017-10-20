@@ -21,7 +21,7 @@ from home import views as home_views
 from accounts import views as accounts_views
 from forum import views as forum_views
 from shop import views as shop_views
-from cart import views as cart_views
+
 
 urlpatterns = [
 
@@ -43,12 +43,11 @@ urlpatterns = [
     url(r'^post/delete/(?P<thread_id>\d+)/(?P<post_id>\d+)/$', forum_views.delete_post, name='delete_post'),
 
     #shop
-    url(r'^shop/$', shop_views.shop),
+    url(r'^shop/$', shop_views.shop, name='shop'),
     url(r'^shop/(?P<product_id>\d+)/$', shop_views.product_detail, name='product_detail'),
     url(r'^shop/new/(?P<product_id>\d+)/$', shop_views.add_review, name='add_review'),
-
-    #cart
-    url(r'^cart/$', cart_views.cart, name='cart'),
+    url(r'^basket/$', shop_views.basket, name='basket'),
+    url(r'^confirm_basket/$', shop_views.confirm_basket, name='confirm_basket'),
 
 
 ]

@@ -1,0 +1,32 @@
+<h1>Checkout</h1>
+<h1>{{ basket }}</h1>
+<table class="table table-striped" id="basket-table">
+        <thead>
+            <tr>
+                <th>Product</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Subtotal</th>
+            </tr>
+        </thead>
+        <tbody>
+
+        {% for item_id, item in basket.items %}
+            <tr id="row{{ item_id }}">
+                <td>{{ item.title }}</td>
+                <td>£{{ item.product_price }}</td>
+                <td> {{ item }}</td>
+                <td>£{{ item.subtotal }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+        <tfoot>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td id="basket-total">£{{ basket_total  }}</td>
+            </tr>
+        </tfoot>
+
+    </table>
