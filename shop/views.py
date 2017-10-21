@@ -6,11 +6,9 @@ from django.contrib import messages, auth
 from django.core.urlresolvers import reverse
 from django.template.context_processors import csrf
 from django.views.decorators.csrf import csrf_exempt
-
 from decimal import Decimal
-from django.http import HttpResponse
-
 import json
+from django.http import HttpResponse
 
 
 def shop(request):
@@ -18,7 +16,7 @@ def shop(request):
 
 
 def product_detail(request, product_id):
-    request.session.set_expiry(120000)
+    request.session.set_expiry(172800)
     product = get_object_or_404(Product, pk=product_id)
 
     if request.method == "POST":
@@ -49,7 +47,7 @@ def product_detail(request, product_id):
                     'subtotal': product_subtotal}}
                 request.session['basket'].update(to_add)
                 messages.success(request, 'Product Added to Basket!')
-        print request.session['basket']
+        # print request.session['basket']
         # return redirect(reverse('product_detail', args={product.pk}))
 
     else:
@@ -94,7 +92,7 @@ def basket(request):
     try:
         basket = request.session['basket']
         basket_total = 0
-        for item in basket:
+        for item in request.session['basket']:
             basket_total += Decimal(basket[item]['subtotal'])
 
         return render(request, 'shop/basket.html', {'basket': basket, 'basket_total': basket_total})
@@ -104,12 +102,29 @@ def basket(request):
 
 @csrf_exempt
 def confirm_basket(request):
-    # print request.POST
-    abc = request.POST
-    myDict = dict(abc.iterlists())
-    print abc
-    print myDict
-    return render(request, 'shop/checkout.html', {'basket': myDict})
+    if request.method == "POST":
+        # print "request"
+        # print request.POST
+        # print json.loads(request.body)
+        request.session['basket'] = json.loads(request.body)
+
+        return HttpResponse("hello")
+    else:
+        basket = request.session['basket']
+        basket_total = 0
+        for item in request.session['basket']:
+            basket_total += Decimal(basket[item]['subtotal'])
+
+        return render(request, 'shop/checkout.html', {'basket': basket, 'basket_total': basket_total})
+
+
+@csrf_exempt
+def continue_shopping(request):
+    if request.method == "POST":
+        request.session['basket'] = json.loads(request.body)
+        return HttpResponse("hello")
+    else:
+        return render(request, 'shop/shop.html', {'products': Product.objects.all()})
 
 
 

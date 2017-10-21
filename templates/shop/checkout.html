@@ -1,5 +1,10 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% load bootstrap_tags %}
+{% block content %}
+
+
 <h1>Checkout</h1>
-<h1>{{ basket }}</h1>
 <table class="table table-striped" id="basket-table">
         <thead>
             <tr>
@@ -13,9 +18,9 @@
 
         {% for item_id, item in basket.items %}
             <tr id="row{{ item_id }}">
-                <td>{{ item.title }}</td>
+                <td>{{ item.product_title }}</td>
                 <td>£{{ item.product_price }}</td>
-                <td> {{ item }}</td>
+                <td> {{ item.quantity }}</td>
                 <td>£{{ item.subtotal }}</td>
             </tr>
         {% endfor %}
@@ -30,3 +35,5 @@
         </tfoot>
 
     </table>
+
+{% endblock %}

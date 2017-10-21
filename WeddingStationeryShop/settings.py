@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django_forms_bootstrap',
-    'rest_framework',
+    # 'rest_framework',
     'debug_toolbar',
     'tinymce',
     'emoticons',

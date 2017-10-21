@@ -48,7 +48,7 @@ urlpatterns = [
     url(r'^shop/new/(?P<product_id>\d+)/$', shop_views.add_review, name='add_review'),
     url(r'^basket/$', shop_views.basket, name='basket'),
     url(r'^confirm_basket/$', shop_views.confirm_basket, name='confirm_basket'),
-
+    url(r'^continue_shopping/$', shop_views.continue_shopping, name='continue_shopping'),
 
 ]
 
