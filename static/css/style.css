@@ -3,6 +3,11 @@ body {
 	color: black;
 }
 
+/*---MESSGAES/ALERTS---*/
+.alert.alert-success{
+    text-align: center;
+}
+
 /*---BASE PAGE---*/
 
 #home-back {

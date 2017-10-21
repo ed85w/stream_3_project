@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load bootstrap_tags %}
+{% block background %}register{% endblock %}
 {% block content %}
     <form role="form" method="post" action="{% url 'register' %}">
         <legend>Register</legend>

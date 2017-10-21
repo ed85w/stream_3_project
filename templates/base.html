@@ -43,6 +43,7 @@
               <li class="nav-item" id="nav-forum"><a href="/forum/">FORUM</a></li>
               {% if user.is_authenticated %}
                 <li><a href="{% url 'logout' %}">LOGOUT</a></li>
+                <li><a href="{% url 'payment_details' %}">ADD/CHANGE PAYMENT DETAILS</a></li>
               {% else %}
                 <li><a href="{% url 'login' %}">LOGIN/REGISTER</a></li>
               {% endif %}

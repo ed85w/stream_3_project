@@ -28,10 +28,11 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', home_views.get_index, name='index'),
 
-    # Login/Register
+    # Account
     url(r'^login/$', accounts_views.login, name='login'),
     url(r'^logout', accounts_views.logout, name='logout'),
     url(r'^register/$', accounts_views.register, name='register'),
+    url(r'^payment_details/$', accounts_views.payment_details, name='payment_details'),
 
     # Forum
     url(r'^forum/$', forum_views.forum),

@@ -36,4 +36,11 @@
 
     </table>
 
+    {% if user.is_authenticated and user.stripe_id %}
+        <button id="pay-btn">Pay</button>
+    {% else %}
+        <button id="add-card-btn">Add Payment Details</button>
+    {% endif %}
+    <button><a href="/shop/">Back to Shop</a></button>
+
 {% endblock %}

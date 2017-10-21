@@ -103,12 +103,8 @@ def basket(request):
 @csrf_exempt
 def confirm_basket(request):
     if request.method == "POST":
-        # print "request"
-        # print request.POST
-        # print json.loads(request.body)
         request.session['basket'] = json.loads(request.body)
-
-        return HttpResponse("hello")
+        return render(request, 'shop/checkout.html')
     else:
         basket = request.session['basket']
         basket_total = 0
