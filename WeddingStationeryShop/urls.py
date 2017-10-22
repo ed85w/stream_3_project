@@ -51,6 +51,7 @@ urlpatterns = [
     url(r'^confirm_basket/$', shop_views.confirm_basket, name='confirm_basket'),
     url(r'^continue_shopping/$', shop_views.continue_shopping, name='continue_shopping'),
 
+    # url(r'^checkout/$', shop_views.checkout_payment, name='checkout_payment'),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

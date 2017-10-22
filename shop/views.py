@@ -9,6 +9,9 @@ from django.views.decorators.csrf import csrf_exempt
 from decimal import Decimal
 import json
 from django.http import HttpResponse
+from django.conf import settings
+import stripe
+from django.contrib.auth.decorators import login_required
 
 
 def shop(request):
@@ -35,9 +38,8 @@ def product_detail(request, product_id):
                 request.session['basket'].update(to_add)
                 messages.success(request, 'Product Added to Basket!')
 
-            # if baskey doesn't already exist
+            # if basket doesn't already exist
             except KeyError:
-                print "basket does not exist"
                 request.session['basket'] = {}
                 product_subtotal = "%.2f" % Decimal(product.price * form.cleaned_data['quantity'])
                 to_add = {product_id: {
@@ -47,9 +49,6 @@ def product_detail(request, product_id):
                     'subtotal': product_subtotal}}
                 request.session['basket'].update(to_add)
                 messages.success(request, 'Product Added to Basket!')
-        # print request.session['basket']
-        # return redirect(reverse('product_detail', args={product.pk}))
-
     else:
         form = AddToBasketForm({'product': product, 'quantity': 1})
 
@@ -103,14 +102,17 @@ def basket(request):
 @csrf_exempt
 def confirm_basket(request):
     if request.method == "POST":
-        request.session['basket'] = json.loads(request.body)
-        return render(request, 'shop/checkout.html')
+        try:
+            request.session['basket'] = json.loads(request.body)
+            # return HttpResponse("hello")
+            return render(request, 'shop/checkout.html')
+        except:
+            return render(request, 'shop/checkout.html')
     else:
         basket = request.session['basket']
         basket_total = 0
         for item in request.session['basket']:
             basket_total += Decimal(basket[item]['subtotal'])
-
         return render(request, 'shop/checkout.html', {'basket': basket, 'basket_total': basket_total})
 
 
@@ -121,6 +123,32 @@ def continue_shopping(request):
         return HttpResponse("hello")
     else:
         return render(request, 'shop/shop.html', {'products': Product.objects.all()})
+
+
+# @login_required
+# def checkout_payment(request):
+#     if request.method == 'POST':
+#         form = PaymentForm(request.POST)
+#         if form.is_valid():
+#
+#             try:
+#                 customer = stripe.Charge.create(
+#                         amount=499,
+#                         currency="USD",
+#                         description=form.cleaned_data['email'],
+#                         card=form.cleaned_data['stripe_id'],
+#                 )
+#             except stripe.error.CardError, e:
+#                 messages.error(request, "Your card was declined!")
+
+
+
+
+
+
+
+
+
 
 
 

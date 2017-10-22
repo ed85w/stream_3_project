@@ -1,5 +1,6 @@
 from django import forms
 from .models import ProductReview, Product
+from accounts.models import User
 
 from importlib import import_module
 from django.conf import settings
@@ -16,10 +17,9 @@ class AddToBasketForm(forms.Form):
     quantity = forms.IntegerField(min_value=1, )
 
 
-# class BasketForm(forms.ModelForm):
-#     SessionStore = import_module(settings.SESSION_ENGINE).SessionStore
-#     class Meta:
-#         model = SessionStore
+class PaymentForm(forms.Form):
+    class Meta:
+        model = User
+        fields = ['stripe_id']
 
-
-
+    # stripe_id = forms.CharField(widget=forms.HiddenInput)

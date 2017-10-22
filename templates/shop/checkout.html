@@ -1,6 +1,17 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
 {% load bootstrap_tags %}
+
+{% block head_js %}
+  <script src="https://js.stripe.com/v2/" type="text/javascript"></script>
+  <script type="text/javascript">
+      //<![CDATA[
+      Stripe.publishableKey = '{{ publishable }}';
+      //]]>
+  </script>
+  <script type="text/javascript" src="{% static 'js/stripe.js' %}"></script>
+{% endblock %}
+
 {% block content %}
 
 
@@ -37,9 +48,19 @@
     </table>
 
     {% if user.is_authenticated and user.stripe_id %}
-        <button id="pay-btn">Pay</button>
+
+
+        <form role="form" method="post" id="payment-form">
+
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary" id="payment-btn">Pay with Stripe</button>
+            </div>
+        </form>
+
+
+
     {% else %}
-        <button id="add-card-btn">Add Payment Details</button>
+        <button id="add-card-btn"><a href="{% url 'payment_details' %}">Add Payment Details</a></button>
     {% endif %}
     <button><a href="/shop/">Back to Shop</a></button>
 

@@ -1,3 +1,4 @@
+//register payment details
 $(function() {
   $("#register-form").submit(function() {
       var form = this;
@@ -24,4 +25,21 @@ $(function() {
       });
       return false;
   });
+});
+
+//make payment
+$(function() {
+    $("#payment-form").submit(function() {
+        var form = this;
+        var amount = $("#basket-total").val();
+
+        charge = stripe.Charge.create(
+            amount=amount,
+            currency="gbp",
+            description="Example charge",
+            source=token,
+        );
+        form.submit();
+
+    });
 });
