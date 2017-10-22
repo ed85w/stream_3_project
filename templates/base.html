@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="stylesheet" type="text/css" href="{% static 'bower_components/bootstrap/dist/css/bootstrap.min.css' %}">
-    <link rel="stylesheet" href="{% static "css/font-awesome-4.7.0/css/font-awesome.css" %}">
+    <link rel="stylesheet" href="{% static 'css/font-awesome-4.7.0/css/font-awesome.css' %}">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 
 
@@ -23,7 +23,7 @@
 </head>
 
 <body id="home-back" class="home {% block background %}{% endblock %}">
-{#  <div  >#}
+
     <nav class="navbar">
       <div class="container-fluid">
         <a class="navbar-brand pull-right" href="{% url 'basket' %}"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span> {{ request.session.basket.items | length }}</a>
