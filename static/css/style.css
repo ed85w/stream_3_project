@@ -17,11 +17,11 @@ body {
 
 .home {
 	height: 100vh;
-	background: url("../img/home.jpeg") no-repeat center center, #fff;
+	background: url("../img/home-back.jpeg") no-repeat center center, #fff;
 	/* fallback for old browsers */
-	background: url("../img/home.jpeg") no-repeat center center, -webkit-linear-gradient(to left, #fff, #fff);
+	background: url("../img/home-back.jpeg") no-repeat center center, -webkit-linear-gradient(to left, #fff, #fff);
 	/* Chrome 10-25, Safari 5.1-6 */
-	background: url("../img/home.jpeg") no-repeat center center, linear-gradient(to left, #fff, #fff);
+	background: url("../img/home-back.jpeg") no-repeat center center, linear-gradient(to left, #fff, #fff);
 	/* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 	color: black;
 	/*background-position: right;*/
@@ -41,6 +41,16 @@ body {
 
 }
 
+.main-prod-img {
+    margin-right: auto;
+    margin-left:auto;
+}
+
+div.card h1 {
+    text-align: center;
+}
+
+/*---rating stars---*/
 .stars-container {
   position: relative;
   display: inline-block;
@@ -75,7 +85,7 @@ body {
 .stars-80:after { width: 80%; }
 .stars-90:after { width: 90%; }
 .stars-100:after { width: 100%; }
-
+/*---end of rating stars---*/
 
 /*---FORUM PAGE---*/
 
