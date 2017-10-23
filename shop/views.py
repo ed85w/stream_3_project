@@ -13,6 +13,8 @@ from django.conf import settings
 import stripe
 from django.contrib.auth.decorators import login_required
 
+stripe.api_key = settings.STRIPE_SECRET
+
 
 def shop(request):
     return render(request, 'shop/shop.html', {'products': Product.objects.all()})
@@ -125,22 +127,27 @@ def continue_shopping(request):
         return render(request, 'shop/shop.html', {'products': Product.objects.all()})
 
 
-# @login_required
-# def checkout_payment(request):
-#     if request.method == 'POST':
-#         form = PaymentForm(request.POST)
-#         if form.is_valid():
-#
-#             try:
-#                 customer = stripe.Charge.create(
-#                         amount=499,
-#                         currency="USD",
-#                         description=form.cleaned_data['email'],
-#                         card=form.cleaned_data['stripe_id'],
-#                 )
-#             except stripe.error.CardError, e:
-#                 messages.error(request, "Your card was declined!")
+@login_required
+def checkout_payment(request):
+    if request.method == 'POST':
+        stripe_id = request.user.stripe_id
+        basket = request.session['basket']
+        basket_total = 0
+        for item in request.session['basket']:
+            basket_total += Decimal(basket[item]['subtotal'])
+        try:
+            stripe.Charge.create(
+                    amount=basket_total,
+                    currency="GBP",
+                    description="wedding shop test",
+                    card=stripe_id,
+            )
+            messages.success(request, "You paid!")
 
+            return render(request, 'shop/checkout.html')
+        except stripe.error.CardError, e:
+            messages.error(request, "Your card was declined!")
+            return render(request, 'shop/checkout.html')
 
 
 

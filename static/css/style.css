@@ -4,6 +4,19 @@ body {
 	font-family: 'Cabin', sans-serif;
 }
 
+.btn-primary {
+    background-color: #615a5a;
+    border-color: #615a5a;
+}
+
+.btn-primary:hover,
+.btn-primary:active,
+.btn-primary:focus {
+    background-color: white;
+
+    color: #615a5a;
+}
+
 /*---MESSGAES/ALERTS---*/
 .alert.alert-success{
     text-align: center;
@@ -44,6 +57,8 @@ body {
 /* collapsed navbar on mobile */
 button.navbar-toggle.collapsed {
 	border-color: white;
+	margin-top: 17px;
+	margin-left: 10px;
 
 }
 /*'burger' colour*/
@@ -84,6 +99,11 @@ a.navbar-brand.pull-right:focus {
     margin-top: 120px;
     margin-right: auto;
     margin-left: auto;
+}
+
+#index-slogan {
+    color: #615a5a;
+    text-align: center;
 }
 
 .home {
@@ -215,4 +235,10 @@ th.table-spacer {
 	height: 100%;
 	background: none;
 	background-color: white;
+}
+
+/*---LOGIN PAGE---*/
+
+button a {
+    color: white;
 }
