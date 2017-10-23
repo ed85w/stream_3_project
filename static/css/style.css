@@ -95,6 +95,10 @@ div.card h1 {
 	background-color: #ebebeb;
 }
 
+tr th .table-spacer {
+    width: 20px;
+}
+
 div .card {
 	border: 2px solid black;
 	background-color: white;

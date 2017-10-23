@@ -17,10 +17,12 @@
                <table>
                    <tr>
                        <th>THREADS</th>
-                       <th> POSTS</th>
+                       <th class="table-spacer"></th>
+                       <th>POSTS</th>
                    </tr>
                    <tr>
                        <td>{{ subject.threads.count }}</td>
+                       <td class="table-spacer"></td>
                        <td>{{ subject|get_total_subject_posts }}</td>
                    </tr>
                </table>
