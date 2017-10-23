@@ -103,7 +103,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, "static")
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
-# MEDIA_ROOT = ''
+
 
 # s3 settings
 AWS_S3_OBJECT_PARAMETERS = {
