@@ -8,7 +8,7 @@ SECRET_KEY = '9d308k0j$a#kkr66br_s_)^w#nabr*o%9ndhy)xxxvoi6o(fyt'
 
 ALLOWED_HOSTS = []
 # SITE_ID = 2
-
+DEBUG = True
 
 # Application definition
 INSTALLED_APPS = [
@@ -93,13 +93,13 @@ USE_TZ = True
 # commented out to test matching with media setup
 # STATIC_URL = '/static/'
 # STATIC_ROOT = ''
-# STATICFILES_DIRS = (
-#     os.path.join(BASE_DIR, "static"),
-# )
 
+STATIC_URL = '/static/'
 
-STATIC_URL = ''
-STATIC_ROOT = os.path.join(BASE_DIR, "static")
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, "static"),
+)
+
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
@@ -112,38 +112,28 @@ SESSION_ENGINE = "django.contrib.sessions.backends.file"
 
 
 # s3 settings
-if os.environ.get( 'DJANGO_ENV', '' ) == 'local':
-    STATIC_URL = '/static/'
 
-    STATICFILES_DIRS = (
-        os.path.join(BASE_DIR, "static"),
-    )
+AWS_S3_OBJECT_PARAMETERS = {
+    'Expires': 'Thu, 31 Dec 2099 20:00:00 GMT',
+    'CacheControl': 'max-age=94608000',
+}
 
-    MEDIA_URL = '/media/'
-    MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+AWS_STORAGE_BUCKET_NAME = 'wedding-shop-bucket'
+AWS_S3_REGION_NAME = 'eu-west-2'
+AWS_ACCESS_KEY_ID = 'AKIAIJZCYHXKOL46CQLQ'
+AWS_SECRET_ACCESS_KEY = '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'
 
-else:
-    AWS_S3_OBJECT_PARAMETERS = {
-        'Expires': 'Thu, 31 Dec 2099 20:00:00 GMT',
-        'CacheControl': 'max-age=94608000',
-    }
+# Tell django-storages the domain to use to refer to static files.
+AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
 
-    AWS_STORAGE_BUCKET_NAME = 'wedding-shop-bucket'
-    AWS_S3_REGION_NAME = 'eu-west-2'
-    AWS_ACCESS_KEY_ID = 'AKIAIJZCYHXKOL46CQLQ'
-    AWS_SECRET_ACCESS_KEY = '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'
+# Tell the staticfiles app to use S3Boto3 storage when writing the collected static files (when
+# you run `collectstatic`).
+# STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
-    # Tell django-storages the domain to use to refer to static files.
-    AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
-
-    # Tell the staticfiles app to use S3Boto3 storage when writing the collected static files (when
-    # you run `collectstatic`).
-    # STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-
-    STATICFILES_LOCATION = 'static'
-    STATICFILES_STORAGE = 'custom_storages.StaticStorage'
-    MEDIAFILES_LOCATION = 'media'
-    DEFAULT_FILE_STORAGE = 'custom_storages.MediaStorage'
+STATICFILES_LOCATION = 'static'
+STATICFILES_STORAGE = 'custom_storages.StaticStorage'
+MEDIAFILES_LOCATION = 'media'
+DEFAULT_FILE_STORAGE = 'custom_storages.MediaStorage'
 
 
 
