@@ -112,7 +112,6 @@ SESSION_ENGINE = "django.contrib.sessions.backends.file"
 
 
 # s3 settings
-
 AWS_S3_OBJECT_PARAMETERS = {
     'Expires': 'Thu, 31 Dec 2099 20:00:00 GMT',
     'CacheControl': 'max-age=94608000',
