@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from django.shortcuts import render, get_object_or_404
 from models import Product, ProductReview, ProductImage, ProductCategory
 from .forms import ProductReviewForm, AddToBasketForm
@@ -146,7 +147,7 @@ def checkout_payment(request):
             )
             if customer.paid:
                 request.session['basket'] = {}
-                messages.success(request, "You paid!")
+                messages.success(request, "{} {}".format("Successfully paid  £", basket_total))
                 return render(request, 'index.html')
             else:
                 messages.error(request, "Payment failed")
