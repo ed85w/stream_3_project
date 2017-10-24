@@ -50,13 +50,14 @@
     {% if user.is_authenticated and user.stripe_id %}
 
 
-        <!--<form role="form" method="post" id="payment-form">-->
+        <form role="form" method="post" action="{% url 'checkout' %}"  id="payment-form" >
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary" id="payment-btn">Pay with Stripe</button>
+            </div>
+        </form>
 
-            <!--<div class="form-group">-->
-                <!--<button type="submit" class="btn btn-primary" id="payment-btn">Pay with Stripe</button>-->
-            <!--</div>-->
-        <!--</form>-->
-        <button class="btn btn-warning" id="payment-btn"><a href="{% url 'checkout' %}">Pay With Stripe</a></button>
+
+        <!--<button class="btn btn-warning" id="payment-btn"><a href="{% url 'checkout' %}">Pay With Stripe</a></button>-->
     {% elif user.is_authenticated %}
         <button class="btn btn-primary" id="add-card-btn"><a href="{% url 'payment_details' %}">Add Payment Details</a></button>
     {% else %}

@@ -127,6 +127,7 @@ def continue_shopping(request):
         return render(request, 'shop/shop.html', {'products': Product.objects.all()})
 
 
+@csrf_exempt
 @login_required
 def checkout_payment(request):
     if request.method == 'POST':
@@ -135,19 +136,26 @@ def checkout_payment(request):
         basket_total = 0
         for item in request.session['basket']:
             basket_total += Decimal(basket[item]['subtotal'])
+        total_in_pence = int(basket_total*100)
         try:
-            stripe.Charge.create(
-                    amount=basket_total,
+            customer = stripe.Charge.create(
+                    amount=total_in_pence,
                     currency="GBP",
                     description="wedding shop test",
-                    card=stripe_id,
+                    customer=stripe_id,
             )
-            messages.success(request, "You paid!")
-
-            return render(request, 'shop/checkout.html')
+            if customer.paid:
+                request.session['basket'] = {}
+                messages.success(request, "You paid!")
+                return render(request, 'index.html')
+            else:
+                messages.error(request, "Payment failed")
+                return render(request, 'shop/checkout.html')
         except stripe.error.CardError, e:
             messages.error(request, "Your card was declined!")
             return render(request, 'shop/checkout.html')
+    else:
+        return render(request, 'shop/checkout.html')
 
 
 

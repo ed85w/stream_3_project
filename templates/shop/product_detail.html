@@ -17,7 +17,7 @@
                 {% include "shop/product_image.html" %}
             </div>
         {% endfor %}
-        <p>a</p>
+        <p>?</p>
     </div>
 
     <!--product details-->
@@ -29,7 +29,7 @@
             {% csrf_token %}
             {{ form|as_bootstrap }}
             <div class="form-group">
-                <button type="submit" class="btn btn-primary">ADD TO BASKET</button>
+                <button type="submit" class="btn btn-primary">Add to Basket</button>
             </div>
         </form>
 
@@ -49,10 +49,12 @@
         </table>
 
         {% if user.is_authenticated %}
-            <button><a href="{% url 'add_review' product.id %}">ADD REVIEW</a></button>
+            <button class="btn btn-primary"><a href="{% url 'add_review' product.id %}">Add Review</a></button>
         {% else %}
-            <button><a href="{% url 'login' %}">LOGIN TO ADD REVIEW</a></button>
+            <button class="btn btn-primary"><a href="{% url 'login' %}">Login to Add Review</a></button>
         {% endif %}
+
+        <button class="btn btn-primary" id="shop-rtn-btn">Continue Shopping</button>
 
 
 
