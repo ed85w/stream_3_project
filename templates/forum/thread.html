@@ -4,38 +4,18 @@
 {% block content %}
  
  <div class="row header">
- 
-   <div class="container">
-     <h2>{{ thread.name }}</h2>
-     <div class="col-md-12">
-         <table class="table">
-             <tbody>
-             <tr>
-                 <th>
-                   CREATED
-                 </th>
-                 <th>OWNER</th>
-                 <th>LAST POST</th>
-             </tr>
-             <tr>
-                 <td>
-                   <time datetime="{{ thread.created_at }}">
-                    {{ thread.created_at|started_time }}
-                   </time>
-                 </td>
-                 <td>{{ thread.user.forum_name }}</td>
-             </tr>
-           </tbody>
-         </table>
+     <div class="container thread-headers">
+         <h1>{{ thread.name }}</h1>
+         <h2>created {{ thread.created_at|started_time }} By {{ thread.user.forum_name }}</h2>
      </div>
      {% if user.is_authenticated %}
-       <p>
+     <div class="text-center">
          <a href="{% url 'new_post' thread.id %}" class="btn btn-primary">New post</a>
-       </p>
-
+     </div>
      {% endif %}
    </div>
  </div>
+
  <div class="container">
    {% for post in thread.posts.all %}
      {% include "forum/post.html" %}

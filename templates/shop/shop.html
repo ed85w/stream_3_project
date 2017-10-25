@@ -8,7 +8,7 @@
         <div class="row">
 
             {% for product in products %}
-                <div class="col-lg-4 col-md-6 col-sm-6"><a href="{% url 'product_detail' product.id %}" >
+                <div class="col-lg-4 col-md-6 col-sm-6 clearfix"><a href="{% url 'product_detail' product.id %}" >
                     <div class="card">
                         <h1>{{ product.title }}</h1>
                         <img class="img-responsive main-prod-img" src="{{ product.main_image.url }}" width="326" height="244" alt="product image">
@@ -16,7 +16,7 @@
                                 <h4 class="card-title">
                                     <a href="#">{{ product.name }}</a>
                                 </h4>
-                                <h5>£{{ product.price }}</h5>
+                                <h5>Price - £{{ product.price }}</h5>
                                 <p class="card-text">{{ product.description|truncatewords:15 }}</p>
                             </div>
                             <div class="card-footer">

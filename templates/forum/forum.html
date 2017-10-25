@@ -8,12 +8,12 @@
     {% for subject in subjects %}
        <section class="subject">
            <div class="col-md-6">
-               <h2><a href="{% url 'threads' subject.id %}">{{ subject.name }}</a></h2>
-               <p>
+               <h1><a href="{% url 'threads' subject.id %}">{{ subject.name }}</a></h1>
+               <h4>
                    <a href="{% url 'threads' subject.id %}">
                        {% autoescape off %}{{ subject.description }}{% endautoescape %}
                    </a>
-               </p>
+               </h4>
                <table>
                    <tr>
                        <th>THREADS</th>

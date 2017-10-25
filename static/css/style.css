@@ -2,6 +2,7 @@ html,
 body {
 	color: black;
 	font-family: 'Cabin', sans-serif;
+
 }
 
 .btn-primary {
@@ -13,9 +14,10 @@ body {
 .btn-primary:active,
 .btn-primary:focus {
     background-color: white;
-
     color: #615a5a;
 }
+
+
 
 /*---MESSGAES/ALERTS---*/
 .alert.alert-success{
@@ -119,37 +121,45 @@ a.navbar-brand.pull-right:focus {
 	-moz-background-size: cover;
 	-o-background-size: cover;
 	background-size: cover;
-	margin: auto;
-	top:0;
-	display: table;
 
 }
 
 /*---SHOP PAGE---*/
 
 .shop {
-
-	height: 100%;
-	background: none;
-	background-color: #f0b9c4;
-
+	background: #f0b9c4; /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(left top, #f0b9c4, #f0e0e3); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(bottom right, #f0b9c4, #f0e0e3); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(bottom right, #f0b9c4, #f0e0e3); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(to bottom right, #f0b9c4, #f0e0e3); /* Standard syntax (must be last) */
+    background-attachment: fixed;
 }
 
 .main-prod-img {
     margin-right: auto;
     margin-left:auto;
+    max-height: 220px;
+}
+
+div .card {
+    height: 420px;
+	background-color: white;
+	padding: 5px 10px 10px 10px;
+	margin-bottom: 10px;
+
 }
 
 div.card h1 {
     color: #615a5a;
     text-align: center;
     font-family: 'Pacifico', cursive;
+    margin-bottom: 15px;
+    margin-top: 10px;
+    font-size: 30px;
 }
 
-div .card {
-	background-color: white;
-	padding: 5px 10px 10px 10px;
-	margin-bottom: 10px;
+div.card a:hover{
+    text-decoration:none;
 }
 
 /*---rating stars---*/
@@ -190,6 +200,47 @@ div .card {
 .stars-100:after { width: 100%; }
 /*---end of rating stars---*/
 
+
+/*---PRODUCT_DETAIL TEMPLATE---*/
+
+.product-details-div {
+    margin-bottom: 10px;
+}
+
+.main-product-image {
+    width: 100%;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+#id_quantity {
+    width: 70px;
+}
+
+
+
+/*---PRODUCT_IMAGE TEMPLATE---*/
+
+.product-image-container{
+    padding: 0;
+}
+
+img.product-image{
+    padding: 4px;
+    border-radius: 10px;
+    max-height: 155px;	/*check!!!!!!!!!*/
+    width: 100%;
+}
+
+h1.product-title {
+    color: #615a5a;
+    text-align: center;
+    font-family: 'Pacifico', cursive;
+    text-decoration: none;
+    margin-bottom: 20px;
+
+}
+
 /*---FORUM PAGE---*/
 
 .forum {
@@ -198,39 +249,39 @@ div .card {
 	background-color: #ebebeb;
 }
 
+.subject div {
+    margin-bottom: 30px;
+}
+
+section div h1 {
+    text-align: center;
+}
+
+section div h1 a{
+    color: white;
+
+    font-family: 'Pacifico', cursive;
+}
+
+section div p {
+    color: #615a5a;
+    text-align: center;
+    font-family: 'Pacifico', cursive;
+}
+
+section div table {
+    color: #615a5a;
+    margin-left: auto;
+    margin-right: auto;
+    font-family: 'Pacifico', cursive;
+}
+
 tr.table-spacer,
 th.table-spacer {
     width: 20px;
 }
 
-	/*---PRODUCT_DETAIL TEMPLATE---*/
 
-	h1.product-title {
-		text-align: center;
-		text-decoration: underline;
-		margin-bottom: 20px;
-	}
-
-	.main-product-image {
-		width: 100%;
-	}
-
-
-
-	/*---PRODUCT_IMAGE TEMPLATE---*/
-
-	.product-image-container{
-		padding: 0;
-	}
-
-	img.product-image{
-		padding: 5px;
-		max-height: 155px;	/*check!!!!!!!!!*/
-		width: 100%;
-	}
-
-
-/*---FORUM PAGE---*/
 
 .nav-forum {
 	height: 100%;
@@ -238,8 +289,69 @@ th.table-spacer {
 	background-color: white;
 }
 
+.thread-headers {
+    color: #615a5a;
+    text-align: center;
+    font-family: 'Pacifico', cursive;
+    margin-bottom: 20px;
+}
+
+.text-center a {
+    margin-top: 15px;
+    margin-bottom: 20px;
+}
+/*---FORUM SUBJECTS PAGE---*/
+
+div .jumbotron {
+    background: transparent;
+    color: #615a5a;
+    text-align: center;
+    font-family: 'Pacifico', cursive;
+}
+
+/*---COMMENT DETAILS PAGE---*/
+
+.comment-details {
+    padding-left: 10px;
+}
+
+section.row.comment {
+    margin-bottom: 30px;
+}
+
 /*---LOGIN PAGE---*/
 
 button a {
     color: white;
+}
+
+/*---BASKET PAGE---*/
+
+#empty-basket {
+    color: #615a5a;
+    text-align: center;
+    font-family: 'Pacifico', cursive;
+    margin-top: 120px;
+    margin-bottom: 30px;
+}
+
+/* Landscape phones and portrait tablets */
+@media (max-width: 767px) {
+/*// css specific properties col-xs-**/
+
+    home:before {
+        content: "";
+        display: block;
+        position: fixed;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 110%;
+        z-index: -10;
+        background: url("../img/home.jpeg") no-repeat center center;
+        -webkit-background-size: 100% 100%;
+        -moz-background-size: 100% 100%;
+        -o-background-size: 100% 100%;
+        background-size: 100% 100%;
+    }
 }

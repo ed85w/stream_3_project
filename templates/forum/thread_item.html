@@ -1,12 +1,9 @@
 <section class="thread">
- <header>
-   <table>
-     <tr>
-       <td>
-         <a href="{% url 'thread' thread.id %}"><h4>{{ thread.name }}</h4></a>
-       </td>
-     </tr>
-   </table>
+    <header>
+        <div class="text-center">
 
- </header>
+            <a href="{% url 'thread' thread.id %}"><h3>{{ thread.name }}</h3></a>
+        </div>
+
+    </header>
 </section>

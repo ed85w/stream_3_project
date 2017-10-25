@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% load shop_extras %}
 {% load staticfiles %}
+<!--{% block background %}shop{% endblock %}-->
 {% load bootstrap_tags %}
 {% block content %}
     <div>
@@ -13,17 +14,17 @@
             <img class="main-product-image" src="{{ product.main_image.url }}" alt="product image">
         </div>
         {% for image in product.productimage_set.all %}
-            <div class="col-md-4 col-xs-4 product-image-container" style="border: 2px solid purple">
+            <div class="col-md-4 col-xs-4 product-image-container">
                 {% include "shop/product_image.html" %}
             </div>
         {% endfor %}
-        <p>?</p>
+        <p style="color:transparent">?</p> <!--hidden, stops the html below from overlapping -->
     </div>
 
     <!--product details-->
-    <div class="col-md-6 col-sm-12">
-        <h4> {{ product.description }}</h4>
-        <h4> £{{ product.price }}</h4>
+    <div class="col-md-6 col-sm-12 product-details-div">
+        <p> {{ product.description }}</p>
+        <h4>Price - £{{ product.price }}</h4>
 
         <form method="post" action="{{ form_action }}">
             {% csrf_token %}

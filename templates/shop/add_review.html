@@ -2,8 +2,7 @@
 {% load bootstrap_tags %}
 {% block content %}
  <section>
-   <div class="col-md-9">
-       <h1>ADD REVIEW!</h1>
+   <div class="col-md-8 col-md-offset-2">
      <form method="post" action="{{ form_action }}">
        {% csrf_token %}
        {{ form|as_bootstrap }}

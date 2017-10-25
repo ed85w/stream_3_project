@@ -35,6 +35,7 @@
     $('#shop-rtn-btn').click(continueShopping);
 
 
+
 });
 
 // function to create JSON copy of current basket
@@ -92,3 +93,4 @@ function continueShopping() {
             location.href = '/continue_shopping/';
     });
 }
+
