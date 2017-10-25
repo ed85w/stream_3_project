@@ -28,7 +28,7 @@ class Product(models.Model):
 class ProductImage(models.Model):
     product = models.ForeignKey(Product)
     image = models.ImageField(upload_to='media/')
-    featured = models.BooleanField(default=False)
+    # featured = models.BooleanField(default=False)
     active = models.BooleanField(default=True)
     updated = models.DateTimeField(auto_now_add=False, auto_now=True)
 
