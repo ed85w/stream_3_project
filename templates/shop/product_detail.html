@@ -13,12 +13,13 @@
         <div class="col-md-12 product-image-container">
             <img class="main-product-image" src="{{ product.main_image.url }}" alt="product image">
         </div>
+
         {% for image in product.productimage_set.all %}
             <div class="col-md-4 col-xs-4 product-image-container">
                 {% include "shop/product_image.html" %}
             </div>
         {% endfor %}
-        <p style="color:transparent">?</p> <!--hidden, stops the html below from overlapping -->
+        <div class="clearfix"></div>
     </div>
 
     <!--product details-->

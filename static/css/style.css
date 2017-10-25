@@ -253,19 +253,26 @@ h1.product-title {
     margin-bottom: 30px;
 }
 
-section div h1 {
+section div {
     text-align: center;
+
 }
+
 
 section div h1 a{
     color: white;
-
     font-family: 'Pacifico', cursive;
+}
+
+section div h4 a{
+    color: white;
+    font-family: 'Pacifico', cursive;
+
 }
 
 section div p {
     color: #615a5a;
-    text-align: center;
+
     font-family: 'Pacifico', cursive;
 }
 
