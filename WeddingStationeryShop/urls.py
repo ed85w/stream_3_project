@@ -35,7 +35,7 @@ urlpatterns = [
     url(r'^payment_details/$', accounts_views.payment_details, name='payment_details'),
 
     # Forum
-    url(r'^forum/$', forum_views.forum),
+    url(r'^forum/$', forum_views.forum, name='forum'),
     url(r'^threads/(?P<subject_id>\d+)/$', forum_views.threads, name='threads'),
     url(r'^new_thread/(?P<subject_id>\d+)/$',  forum_views.new_thread, name='new_thread'),
     url(r'^thread/(?P<thread_id>\d+)/$', forum_views.thread, name='thread'),

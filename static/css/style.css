@@ -59,13 +59,19 @@ body {
     text-decoration: none;
 }
 
+.active-nav {
+    background-color: #615a5a;
+    color: white;
+    border-radius: 10px;
+    text-decoration: none;
+}
+
 .sidebar {
 	width: 100%;
 	display: inline-block;
 	text-align: center;
 	float: none;
 	vertical-align: top;
-
 	z-index: 100;
 }
 
@@ -83,7 +89,6 @@ ul li {
 	border-color: white;
 	margin-top: 25px;
 	margin-bottom: 35px;
-
 }
 
 

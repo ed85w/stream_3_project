@@ -12,8 +12,8 @@
     <link href="https://fonts.googleapis.com/css?family=Cabin|Pacifico" rel="stylesheet">
 
     <!---cdn used for glyphicons, which were producing access error from s3-->
-    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <!--<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">-->
+    <!--<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">-->
 
     <link rel="stylesheet" type="text/css" href="{% static 'bower_components/bootstrap/dist/css/bootstrap.min.css' %}">
     <link rel="stylesheet" href="{% static 'css/font-awesome-4.7.0/css/font-awesome.css' %}">
@@ -33,14 +33,14 @@
 
     <nav class="sidebar">
 		<ul class="sidebar-nav">
-              <li><a href="/">HOME</a></li>
-              <li><a href="/shop/">SHOP</a></li>
-              <li><a href="/forum/">FORUM</a></li>
+              <li><a href="/" class="{% if request.resolver_match.url_name == "index" %}active-nav{% endif %}">HOME</a></li>
+              <li><a href="/shop/" class="{% if request.resolver_match.url_name == "shop" %}active-nav{% endif %}">SHOP</a></li>
+              <li><a href="/forum/" class="{% if request.resolver_match.url_name == "forum" %}active-nav{% endif %}">FORUM</a></li>
               {% if user.is_authenticated %}
-                <li><a href="{% url 'logout' %}">LOGOUT</a></li>
-                <li><a href="{% url 'payment_details' %}">ADD/CHANGE PAYMENT DETAILS</a></li>
+                <li><a href="{% url 'logout' %}" class="{% if request.resolver_match.url_name == "logout" %}active-nav{% endif %}">LOGOUT</a></li>
+                <li><a href="{% url 'payment_details' %}" class="{% if request.resolver_match.url_name == "payment_details" %}active-nav{% endif %}">ADD/CHANGE PAYMENT DETAILS</a></li>
               {% else %}
-                <li><a href="{% url 'login' %}">LOGIN/REGISTER</a></li>
+                <li><a href="{% url 'login' %}" class="{% if request.resolver_match.url_name == "login" %}active-nav{% endif %}">LOGIN/REGISTER</a></li>
               {% endif %}
 		</ul>
 		<button class="sidebarBtn">
