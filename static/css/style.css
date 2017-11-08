@@ -3,6 +3,7 @@ body {
 	color: black;
 	font-family: 'Cabin', sans-serif;
 
+
 }
 
 .btn-primary {
@@ -26,26 +27,7 @@ body {
 
 /*---NAVBAR STYLING---*/
 
-.navbar .navbar-nav {
-	display: inline-block;
-	float: none;
-	vertical-align: top;
-	margin-bottom: 0;
-	border-radius: 0;
-
-}
-.navbar .navbar-collapse {
-  text-align: center;
-}
-
-.navbar-nav>li>a {
-	color: white;
-	margin: 15px 0;
-    padding: 15px 20px;
-    font-size:16px;
-    font-weight: bold;
-}
-
+/*
 .nav>li>a:hover,
 .nav>li>a:active,
 .nav>li>a:focus,
@@ -56,35 +38,78 @@ body {
 	border-radius: 10px;
 }
 
-/* collapsed navbar on mobile */
-button.navbar-toggle.collapsed {
-	border-color: white;
-	margin-top: 17px;
-	margin-left: 10px;
-
-}
-/*'burger' colour*/
-span.icon-bar {
-	background-color: white;
-}
-
-/*---cart icon---*/
-
-a.navbar-brand.pull-right{
+*/
+#basket {
+    position: absolute;
+    top: 5px;
+    right: 10px;
     background-color: white;
     border-radius: 10px;
     color: #615a5a;
-    margin-top: 15px;
+    margin-top: 10px;
     padding: 10px;
     height: 40px;
 }
 
-a.navbar-brand.pull-right:hover,
-a.navbar-brand.pull-right:active,
-a.navbar-brand.pull-right:focus {
+#basket:hover,
+#basket:active,
+#basket:focus {
     background-color: #615a5a;
     color: white;
+    text-decoration: none;
 }
+
+.sidebar {
+	width: 100%;
+	display: inline-block;
+	text-align: center;
+	float: none;
+	vertical-align: top;
+
+	z-index: 100;
+}
+
+nav {
+	width: 80%;
+	margin: 0 auto;
+	padding: 0;
+}
+
+ul li {
+	list-style: none;
+	display: inline-block;
+}
+.sidebar-nav {
+	border-color: white;
+	margin-top: 25px;
+	margin-bottom: 35px;
+
+}
+
+
+.sidebar-nav > li > a {
+    position: relative;
+	color: white;
+	margin: 15px 0;
+    padding: 15px 20px;
+    font-size:16px;
+    font-weight: bold;
+    text-decoration:none;
+}
+
+.sidebar-nav > li > a:hover,
+.sidebar-nav > li > a:active,
+.sidebar-nav > li > a:focus {
+	background-color: #615a5a;
+	border-radius: 10px;
+}
+
+
+.sidebarBtn {
+	display: none;
+	z-index: 101;
+}
+
 
 /*---INDEX PAGE---*/
 
@@ -352,6 +377,10 @@ button a {
 @media (max-width: 767px) {
 /*// css specific properties col-xs-**/
 
+    body {
+        margin-top: 70px;
+    }
+
     home:before {
         content: "";
         display: block;
@@ -367,4 +396,108 @@ button a {
         -o-background-size: 100% 100%;
         background-size: 100% 100%;
     }
+
+    /* sidebar styling */
+    	.sidebar {
+		display: block;
+		position: fixed;
+		top: 0;
+		left: -250px; 			/*same as width*/
+		background: #262626;
+		width: 250px;
+		height: 100%;
+		transition: .8s;
+		/*transition-timing-function: ease-in;*/
+	}
+
+	.active {
+		left: 0;
+		width: 100%;
+	}
+
+	ul {
+		margin: 0;
+		padding: 20px 0;
+
+	}
+
+	ul li {
+		display: block;
+	}
+
+	ul li a {
+		padding: 10px 20px;
+		color: #fff;
+		display: block;
+		text-decoration: none;
+		border-bottom: 1px solid rgba(0,0,0,.2);
+	}
+
+	.sidebarBtn {
+		display: block;
+		position: absolute;
+		top: 0;
+		right: -50px;
+		width: 50px;
+		height: 50px;
+		box-sizing: border-box;
+		cursor: pointer;
+		background: #f5f5f5;
+		border: none;
+		outline: none;
+	}
+
+	.sidebarBtn span {
+		display: block;
+		width: 35px;
+		height: 3px;
+		background: #262626;
+		position: absolute;
+		top: 24px;
+		transition: .3s;
+	}
+
+	.sidebarBtn span:before {
+		content: '';
+		position: absolute;
+		top: -10px;
+		left: 0;
+		width: 100%;
+		height: 3px;
+		background: #262626;
+		transition: .3s;
+	}
+
+	.sidebarBtn span:after {
+		content: '';
+		position: absolute;
+		top: 10px;
+		left: 0;
+		width: 100%;
+		height: 3px;
+		background: #262626;
+		transition: .3s;
+	}
+
+	.sidebarBtn.toggle{
+		right: 0;
+		transition: 0.3s;
+	}
+
+	.sidebarBtn.toggle span {
+		background: transparent;
+	}
+
+	.sidebarBtn.toggle span:before {
+		top: 0;
+		transform: rotate(45deg);
+	}
+
+	.sidebarBtn.toggle span:after {
+		top: 0;
+		transform: rotate(-45deg);
+	}
+
+
+
 }

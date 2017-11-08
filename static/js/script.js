@@ -4,6 +4,12 @@
 
  $(document).ready(function(){
 
+    // sidebar button toggle
+    $('.sidebarBtn').click(function(){
+        $('.sidebar').toggleClass('active')
+        $('.sidebarBtn').toggleClass('toggle')
+    })
+
     // function to update basket subtotals and total when number of items changes
     $('table tr td input').on('input', function() {
         var id = $(this).attr('id').substring(16,17);
