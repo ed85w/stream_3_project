@@ -2,8 +2,9 @@ html,
 body {
 	color: black;
 	font-family: 'Cabin', sans-serif;
-    overflow: hidden;
+    /*---overflow: hidden;---*/
 }
+
 
 .btn-primary {
     background-color: #615a5a;
@@ -112,6 +113,7 @@ ul li {
 .sidebarBtn {
 	display: none;
 	z-index: 101;
+	border: 1px solid #d3d0d0;
 }
 
 
@@ -189,6 +191,16 @@ div.card h1 {
 
 div.card a:hover{
     text-decoration:none;
+}
+
+.card-body h5,
+.card-body p {
+    color: black;
+}
+
+.card-body h5:hover,
+.card-body p:hover {
+    text-decoration: none;
 }
 
 /*---rating stars---*/
@@ -462,7 +474,6 @@ button a {
 		box-sizing: border-box;
 		cursor: pointer;
 		background: white;
-		border: none;
 		outline: none;
 	}
 
