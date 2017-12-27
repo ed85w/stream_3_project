@@ -16,7 +16,7 @@ class Product(models.Model):
     description = models.TextField(null=True, blank=True)
     category = models.ManyToManyField(ProductCategory, blank=True)
     main_image = models.ImageField(upload_to='media/')
-    price = models.DecimalField(max_digits=11, decimal_places=2,  null=True, blank=True)
+    price = models.DecimalField(max_digits=6, decimal_places=2,  null=True, blank=True)
     stock = models.IntegerField()
     timestamp = models.DateTimeField(auto_now_add=True, auto_now=False)
     active = models.BooleanField(default=True)

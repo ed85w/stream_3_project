@@ -13,11 +13,12 @@
 {% endblock %}
  
 {% block content %}
+<div class="col-md-10 col-md-offset-1">
   <form role="form" method="post" id="register-form" action="{% url 'payment_details' %}">
     <div id="credit-card-errors" style="display:none">
       <div class="alert-message block-message error" id="stripe-error-message"></div>
     </div>
- 
+
     <legend>Add Payment Details</legend>
     {% csrf_token %}
     {{ form|as_bootstrap }}
@@ -27,5 +28,5 @@
   </form>
 
   <h4>Note - use 4242424242424242 as testing credit card number</h4>
-
+</div>
 {% endblock %}

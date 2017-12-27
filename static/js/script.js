@@ -4,11 +4,15 @@
 
  $(document).ready(function(){
 
+    //SIDEBAR FUNCTION
+
     // sidebar button toggle
     $('.sidebarBtn').click(function(){
         $('.sidebar').toggleClass('active')
         $('.sidebarBtn').toggleClass('toggle')
     })
+
+    // BASKET FUNCTIONS
 
     // function to update basket subtotals and total when number of items changes
     $('table tr td input').on('input', function() {
@@ -42,7 +46,7 @@
 
 
 
-});
+});  //end of doc ready
 
 // function to create JSON copy of current basket
 function getBasketJson(){
@@ -61,13 +65,11 @@ function getBasketJson(){
     // filter out blanks from things array
     things = things.filter(function(e){return e});
 
-    //get length of array and calcullate number of products in basket
+    //get length of array and calculate number of products in basket
     var arrayLen = things.length;
-    // var numProducts = arrayLen/5;
 
     var basket = {};
     for (var i=0; i < arrayLen; i+=5){
-        // var productObject = {};
         var prodID = things[i];
         basket[prodID] = {
             product_title: things[i+1],
