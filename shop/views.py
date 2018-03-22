@@ -13,12 +13,25 @@ from django.http import HttpResponse
 from django.conf import settings
 import stripe
 from django.contrib.auth.decorators import login_required
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+
 
 stripe.api_key = settings.STRIPE_SECRET
 
 
 def shop(request):
-    return render(request, 'shop/shop.html', {'products': Product.objects.all()})
+    product_list = Product.objects.all()
+    page = request.GET.get('page', 1)
+
+    paginator = Paginator(product_list, 3)
+    try:
+        products = paginator.page(page)
+    except PageNotAnInteger:
+        products = paginator.page(1)
+    except EmptyPage:
+        products = paginator.page(paginator.num_pages)
+
+    return render(request, 'shop/shop.html', {'products': products})
 
 
 def product_detail(request, product_id):

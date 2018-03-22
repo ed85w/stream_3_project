@@ -404,7 +404,7 @@ button a {
 /*// css specific properties col-xs-**/
 
     body {
-        margin-top: 70px;
+        padding-top: 60px;
         background: #f0b9c4;
     }
 
@@ -526,6 +526,19 @@ button a {
 	.sidebarBtn.toggle span:after {
 		top: 0;
 		transform: rotate(-45deg);
+	}
+
+	#basket {
+	    position: fixed;
+	    top: 0;
+	    right: 0;
+	    margin-top: 0;
+	    height: 50px;
+	    width: 50px;
+	    padding: 15px 10px 10px 10px;
+	    border: 1px solid #d3d0d0;
+	    border-radius: 0;
+	    z-index: 99;
 	}
 
 
