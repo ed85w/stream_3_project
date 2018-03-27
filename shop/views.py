@@ -23,7 +23,8 @@ def shop(request):
     product_list = Product.objects.all()
     page = request.GET.get('page', 1)
 
-    paginator = Paginator(product_list, 3)
+    # 6 items per page
+    paginator = Paginator(product_list, 6)
     try:
         products = paginator.page(page)
     except PageNotAnInteger:
