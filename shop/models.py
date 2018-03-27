@@ -32,6 +32,9 @@ class ProductImage(models.Model):
     active = models.BooleanField(default=True)
     updated = models.DateTimeField(auto_now_add=False, auto_now=True)
 
+    def __unicode__(self):
+            return self.product.title
+
 
 class ProductReview(models.Model):
     product = models.ForeignKey(Product)
