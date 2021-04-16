@@ -6,7 +6,7 @@ certifi==2017.7.27.1
 chardet==3.0.4
 Django==1.11.5
 django-bootstrap3==9.0.0
-django-debug-toolbar==1.8
+django-debug-toolbar==1.11.1
 django-emoticons==1.2
 django-forms-bootstrap==3.1.0
 django-static-jquery==2.1.4
